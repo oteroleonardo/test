@@ -824,3 +824,36 @@ Comentarios: La VLAN nativa se asigna a troncales 802.1Q para proporcionar un id
 
 VLAN de voz.
 
+# Preguntas abiertas primer examen
+
+> Detallar las características principales y las diferencias de los switchs y routers.
+
+Un switch es un dispositivo de interconexión utilizado para conectar equipos en red formando lo que se conoce como una red de área local (LAN). Sus especificaciones técnicas siguen el estándar conocido como Ethernet (o técnicamente IEEE 802.3). En general los Switch trabajan en capa logrando su direccionamiento mediante el uso de Mac Address (tal como se definen en la capa de enlace de datos del model OSI). No obstante tambien existen Switchs de capa 3 que aprobechan la información de dicha capa para mejorar el enrutamiento dentro de la LAN.
+
+Los router en cambio sirven para lograr el enrutamientos entre redes distintas utilizando para ellos tablas de enrutamiento IP (capa 3 del modelo OSI). Gracias a este tipo de enrutamiento los router logran alcanzar conectar redes locales o LAN a redes mas grandes o WANS como sudede cuando se accede a internet mediante un ISP. Los routers analizan la dirección de destino IP de cada paquete y deciden el mejor camino a seguir segun el protocolo que esten utilizando. Este proceso toma tiempo, por lo tanto cada paquete experimenta algún tipo de retraso como consecuencia de ello.
+
+# Pregunta 34
+
+> ¿Cuáles son los elementos que componen el cableado estructurado? Nombrar y explicar.
+
+Cableado Horizontal: Es el cabledo de cada planta que tipicamente va desde los faceplates a la sala de telecomunicaciones (no puede superar los 90 mts).
+Cableado Vertical: Es el cableado que va desde la capa core saliendo del MDF (cuarto de equipos) a las salas de telecomunicación.
+Cableado de Entrada: Es el cableado que incluye la acometida y llega al MDF para lograr que puedan ingresar los servicios externos (internet, telefonia, etc)
+Cuarto de Telecomunicaciones: Es el cuarto presente en cada piso a donde se soportan los switches que reciben el cableado horizontal y conectan mediante el cableado vertical con los switch del MDF.
+Area de Trabajo: es donde trabaja el personal con las computadoras, teléfonos, impresoras, etc. Es donde tienen que llegar los diferentes servicios: Datos, Telefonía, electricidad, videoconferencia, monitores de seguridad (monitores, alarmas), etc.
+Materiales para el desarrollo del sistema de cableado: Cable, conectores, canaletas, ductos y herramientas.
+
+# Preguntas abiertas del segundo examen
+
+## Pregunta 33
+
+> Explicar enrutamiento por vector distancia y estado de enlace, detallar sus diferencias y dar ejemplos.
+
+Enrutamiento por vector distancia: Un router que usa protocolos de enrutamiento de vector de distancia tiene la siguiente información: La distancia al destino final y el vector, o la dirección, hacia donde va el tráfico. Algunas caracteristicas de este tipo de enrutamiento son : Actualizaciones periódicas, vecinos y actualizaciones de broadcast. Por otro lado toda la tabla de enrutamiento se incluye en la actualización de enrutamiento. Ventaja de los mismos serían que son de implementación y mantenimiento simple y que generan poca carga de CPU y memoria y como desventaja pueden ser de convergencia lenta. Ejemplos de vector distancia son los protocolos RIP, IGRP y EIGRP.
+Enrutamiento por estado de enlace: Estoy protocolos son mas inteligentes y se adaptan al estado del enlace de red. En general para el diseño de redes basados en los mismos se utilizan diseños jerarquicos. Manejan un base de datos con el estado de la red. Pueden conocer redes distantes y suelen requerir de una mayor carga de CPU para el calculo del SPF y mayor memoria para almacenar también el SPF. También es interesante notar que se puede llegar a un punto de saturación de la red con paquetes de estado de enlace perjudicando el ancho de banda de la red. Un ejemplo de este ultimo tipo de protocolo es OSPF
+
+## Pregunta 34
+
+> ¿Cómo es el funcionamiento de OSPF, ventajas y desventajas?
+
+Los enrutadores OSPF intercambian información mediante lo que se llaman "actualizaciones de estado de enlace" (LSU). Una LSU suele contener uno o más grupos de datos llamados "publicaciones de estado de enlace" (LSA). Hay 11 tipos de LSAs de los cuales siete son usados con más regularidad, uno es utilizado para IPv6 en OSPFv y tres son LSA ópacas que se usan básicamente para MPLS (tecnología de reenvío de paquetes que utiliza etiquetas para tomar decisiones). Asi como cada enrutador en OSPF tiene un identificador, la LSA lleva un identificador que varia según la información que contenga. Entre sus ventajas se encuenta el que es un protocolo que permite adaptarse al estado de los enlaces y entre sus desventajas la mayor carga de procesamiento y memoria para el procesamiento y almacenamiento del SPF. OSPF tiene como deventaja que intercambia una gran cantidad de paquetes de: Salud, de sus bases de datos, desolicitud de estado de enlace, de acuse de recibo de estado de enlace etc.
